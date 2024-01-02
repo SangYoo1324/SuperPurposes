@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
+import {slideInRouterAnimation} from "./app.animation";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template:`
+    <app-header></app-header>
+    <div [@slideInRouterAnimation]="o.isActivated ? o.activatedRoute : ''">
+      <router-outlet #o="outlet"></router-outlet>
+
+    </div>
+  `,
+  styleUrls: ['./app.component.css'],
+  animations: [slideInRouterAnimation]
 })
 export class AppComponent {
   title = 'SuperPurposes';
